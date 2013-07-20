@@ -25,3 +25,21 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from lang import language
 
+_FR = {
+    'startword': 'jouer',
+    'items': [
+        # Armes blanches
+        'couteau', 'hache', 'katana', 'tronçoneuse',
+        # Armes à feu
+        '9mm', 'fusil sniper', 'fusil d\'assaut',
+        # Electronique
+        'telephone portable', 'ordinateur', 'radio',
+        # Divers
+        'tournevis', 'peluche', 'boite de conserve',
+    ],
+    'sentences': [
+        'Face à un glacier, bien gardé, votre seul désire est d\' y entrer',
+    ]
+}
+
+language['fr'] = _FR

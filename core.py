@@ -23,3 +23,46 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
+
+from random import sample, randint, choice
+from string import hexdigits
+from lang import write_message, language
+
+class Core:
+    ''' A simple core uses in multithread mode '''
+
+    def __init__(self, lang):
+        ''' Set the uuid and language of this core '''
+        self.uuid = '%s_%s' % (lang.upper(), ''.join(sample(hexdigits, 13)))
+        self.lang = lang
+
+    def _get_items(self):
+        ''' Get the usable item list '''
+        available_items = language[self.lang]['items']
+
+        items_number = randint(1,3)
+        allowed_item = sample(available_items, items_number)
+
+        return items_number, allowed_item
+
+    def _get_sentence(self):
+        ''' Get the target sentence '''
+        available_sentence = language[self.lang]['sentences']
+
+        final_sentence = choice(available_sentence)
+
+        return final_sentence
+
+    def send_message(self):
+        ''' Return the sended message '''
+
+        sentence = self._get_sentence()
+        items_number, items_list= self._get_items()
+
+        return write_message(self.lang, sentence, items_list)
+
+
+#Main use
+if __name__ == '__main__':
+    this = Core('fr')
+    print this.send_message()

@@ -1,3 +1,5 @@
+''' How to manage I/O '''
+
 '''
 Copyright (c) 2013 GERODEL Quentin (aka Swizz540)
 

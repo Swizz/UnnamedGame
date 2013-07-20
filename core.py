@@ -1,4 +1,4 @@
-''' How to manage I/O '''
+''' Crawler's core '''
 
 '''
 Copyright (c) 2013 GERODEL Quentin (aka Swizz540)

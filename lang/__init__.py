@@ -25,5 +25,29 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
 
 language = {}
-
 from . import fr
+
+def concat_items(lang, items_list):
+    ''' Concatenate the items list in a right sentence '''
+    linkers = language[lang]['linkers']
+    
+    items_sentence = ''
+    items_number = len(items_list)
+
+    for pos, item in enumerate(items_list):
+        if(pos == items_number-1):
+            items_sentence += linkers[1]
+        elif(pos > 0):
+            items_sentence += linkers[0]
+
+        items_sentence += item
+
+    return items_sentence
+
+def write_message(lang, sentence, items_list):
+    ''' Write the sended message '''
+    base_message = language[lang]['message']
+
+    return base_message % \
+           { 'sentence': sentence, 
+            'allowed_items': concat_items(lang, items_list)}

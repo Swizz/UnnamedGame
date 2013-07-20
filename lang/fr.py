@@ -45,7 +45,7 @@ _FR = {
     # Elements du message final
     'message': '%(sentence)s \n'
                'Mais pour cela vous ne disposez que d\'%(allowed_items)s',
-    'link' : 'et d\'' 
+    'linkers' : (', d\'', ' et d\'')
 }
 
 language['fr'] = _FR

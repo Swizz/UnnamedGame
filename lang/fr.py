@@ -30,17 +30,22 @@ _FR = {
     'startword': 'jouer',
     'items': [
         # Armes blanches
-        'couteau', 'hache', 'katana', 'tronçoneuse',
+        'un couteau', 'une hache', 'un katana', 'une tronçoneuse',
         # Armes à feu
-        '9mm', 'fusil sniper', 'fusil d\'assaut',
+        'un 9mm', 'un fusil sniper', 'un fusil d\'assaut',
         # Electronique
-        'telephone portable', 'ordinateur', 'radio',
+        'un telephone portable', 'un ordinateur', 'une radio',
         # Divers
-        'tournevis', 'peluche', 'boite de conserve',
+        'un tournevis', 'une peluche', 'une boite de conserve',
     ],
     'sentences': [
         'Face à un glacier, bien gardé, votre seul désire est d\' y entrer',
-    ]
+    ],
+
+    # Elements du message final
+    'message': '%(sentence)s \n'
+               'Mais pour cela vous ne disposez que d\'%(allowed_items)s',
+    'link' : 'et d\'' 
 }
 
 language['fr'] = _FR

@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 ''' A lot of things to manage language support '''
 
 '''

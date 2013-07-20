@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 ''' How to manage I/O '''
 
 '''

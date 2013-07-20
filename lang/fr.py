@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 ''' The FR language support dictionary '''
 
 '''

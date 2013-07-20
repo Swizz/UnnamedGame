@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 ''' Crawler's core '''
 
 '''

@@ -23,3 +23,48 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
+from tweepy.streaming import Stream, StreamListener
+from tweepy import OAuthHandler, API
+import json
+
+Ukey = 'censored' 
+Usecret = 'censored' 
+
+Akey = 'censored' 
+Asecret = 'censored' 
+
+
+class Crawler(StreamListener):
+    """ A listener handles tweets are the received from the stream.
+    This is a basic listener that just prints received tweets to stdout.
+
+    """
+
+    def __init__(self):
+        self.line = 0
+
+    def on_data(self, data):
+        data = json.loads(data)
+
+
+        if(self.line>0 and data["in_reply_to_screen_name"] == "Swizz540"):
+            print data["user"]["name"], "[" + data["created_at"] + "]"
+            print data["text"]
+
+        self.line+=1
+        return True
+
+    def on_error(self, status):
+        print "Erreur :::", status
+        return True
+
+if __name__ == '__main__':
+    l = Crawler()
+    auth = OAuthHandler(Ukey, Usecret)
+    auth.set_access_token(Akey, Asecret)
+
+    api = API(auth)
+    print api.me().name
+
+    stream = Stream(auth, l)
+    stream.userstream()

@@ -25,46 +25,84 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
 from tweepy.streaming import Stream, StreamListener
 from tweepy import OAuthHandler, API
+from lang import get_language
+from core import Core
 import json
+import re
 
-Ukey = 'censored' 
-Usecret = 'censored' 
+Ukey = 'censored'
+Usecret = 'censored'
 
-Akey = 'censored' 
-Asecret = 'censored' 
+Akey = 'censored'
+Asecret = 'censored'
 
+BotName = 'censored'
 
-class Crawler(StreamListener):
-    """ A listener handles tweets are the received from the stream.
+class Streamer(StreamListener):
+    ''' A listener handles tweets are the received from the stream.
     This is a basic listener that just prints received tweets to stdout.
 
-    """
+    '''
 
-    def __init__(self):
+    def __init__(self, crawler):
         self.line = 0
+        self.crawler = crawler
 
     def on_data(self, data):
         data = json.loads(data)
 
 
-        if(self.line>0 and data["in_reply_to_screen_name"] == "Swizz540"):
-            print data["user"]["name"], "[" + data["created_at"] + "]"
-            print data["text"]
+        if(self.line>0 and data['in_reply_to_screen_name'] == self.crawler.name):
+            self.crawler.on_request(data['text'], data['user']['screen_name'])
 
         self.line+=1
         return True
 
     def on_error(self, status):
-        print "Erreur :::", status
+        print 'Erreur :::', status
         return True
 
+
+
+class Crawler():
+    ''' The global crawler manager '''
+
+    def __init__(self, name):
+        self.name = name
+        self.regexp = re.compile('@%s\s+' % (self.name),
+                                 re.IGNORECASE)
+
+        self._start_stream()
+
+
+    def _auth():
+        self.auth = OAuthHandler(Ukey, Usecret)
+        self.auth.set_access_token(Akey, Asecret)
+
+        self.api = API(self.auth)
+
+    def _start_stream(self):
+        self.listener = Streamer(self)
+
+        self._auth()
+
+        self.stream = Stream(self.auth, self.listener)
+        self.stream.userstream()
+
+    def on_request(self, text, author):
+        text = re.sub(self.regexp, '', text)
+        text = re.sub('\s+$', '', text)
+
+        lang = get_language(text, key='startword')
+        core = Core(lang)
+
+        self.send_message(core.send_message(), author)
+
+    def send_message(self, text, target=None):
+        if(target is not None):
+            text = '@%s %s' % (target, text)
+
+        self.api.update_status(text)
+
 if __name__ == '__main__':
-    l = Crawler()
-    auth = OAuthHandler(Ukey, Usecret)
-    auth.set_access_token(Akey, Asecret)
-
-    api = API(auth)
-    print api.me().name
-
-    stream = Stream(auth, l)
-    stream.userstream()
+    this = Crawler(BotName)

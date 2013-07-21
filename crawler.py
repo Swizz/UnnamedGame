@@ -52,14 +52,16 @@ class Streamer(StreamListener):
         data = json.loads(data)
 
 
-        if(self.line>0 and data['in_reply_to_screen_name'] == self.crawler.name):
-            self.crawler.on_request(data['text'], data['user']['screen_name'])
+        if(self.line>0):
+            if('in_reply_to_screen_name' in data):
+                if(data['in_reply_to_screen_name'] == self.crawler.name):
+                    self.crawler.on_request(data['text'], data['user']['screen_name'])
 
         self.line+=1
         return True
 
     def on_error(self, status):
-        print 'Erreur :::', status
+        print u'Erreur :::', status
         return True
 
 
@@ -69,7 +71,7 @@ class Crawler():
 
     def __init__(self, name):
         self.name = name
-        self.regexp = re.compile('@%s\s+' % (self.name),
+        self.regexp = re.compile(r'@%s\s+' % (self.name),
                                  re.IGNORECASE)
 
         self._start_stream()
@@ -91,7 +93,7 @@ class Crawler():
 
     def on_request(self, text, author):
         text = re.sub(self.regexp, '', text)
-        text = re.sub('\s+$', '', text)
+        text = re.sub(r'\s+$', '', text)
 
         lang = get_language(text, key='startword')
         core = Core(lang)
@@ -100,7 +102,7 @@ class Crawler():
 
     def send_message(self, text, target=None):
         if(target is not None):
-            text = '@%s %s' % (target, text)
+            text = u'@%s %s' % (target, text)
 
         self.api.update_status(text)
 

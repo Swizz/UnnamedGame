@@ -27,25 +27,25 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 from lang import language
 
 _FR = {
-    'startword': 'jouer',
+    'startword': u'jouer',
     'items': [
         # Armes blanches
-        'un couteau', 'une hache', 'un katana', 'une tronçoneuse',
+        u'un couteau', u'une hache', u'un katana', u'une tronçoneuse',
         # Armes à feu
-        'un 9mm', 'un sniper', 'un M16',
+        u'un 9mm', u'un sniper', u'un M16',
         # Electronique
-        'un telephone', 'un ordinateur', 'une radio',
+        u'un telephone', u'un ordinateur', u'une radio',
         # Divers
-        'un tournevis', 'une peluche', 'une conserve',
+        u'un tournevis', u'une peluche', u'une conserve',
     ],
     'sentences': [
-        'Face à un glacier, bien gardé, votre seul désire est d\' y entrer',
+        u'Face à un glacier, bien gardé, votre seul désire est d\'y entrer',
     ],
 
     # Elements du message final
-    'message': '%(sentence)s \n'
+    'message': u'%(sentence)s \n'
                'Objets : %(allowed_items)s',
-    'linkers' : (', ', ' et ')
+    'linkers' : (u', ', u' et ')
 }
 
 language['fr'] = _FR

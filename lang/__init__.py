@@ -31,7 +31,7 @@ def concat_items(lang, items_list):
     ''' Concatenate the items list in a right sentence '''
     linkers = language[lang]['linkers']
     
-    items_sentence = ''
+    items_sentence = u''
     items_number = len(items_list)
 
     if(len(items_list) > 1):

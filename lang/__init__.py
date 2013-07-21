@@ -55,3 +55,19 @@ def write_message(lang, sentence, items_list):
     return base_message % \
            { 'sentence': sentence, 
              'allowed_items': items_sentence}
+
+def get_language(string, key=None):
+    ''' Get the language of a string
+        
+        You can specify an optional key '''
+
+    for lang, dic in language.items():
+        if(key is None):
+            for key, values in dic.items():
+                if string in values:
+                    return lang
+        else:
+            if string in dic[key]:
+                return lang
+
+    return None

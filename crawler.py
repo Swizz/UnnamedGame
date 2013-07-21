@@ -75,7 +75,7 @@ class Crawler():
         self._start_stream()
 
 
-    def _auth():
+    def _auth(self):
         self.auth = OAuthHandler(Ukey, Usecret)
         self.auth.set_access_token(Akey, Asecret)
 

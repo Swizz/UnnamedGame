@@ -32,11 +32,11 @@ _FR = {
         # Armes blanches
         'un couteau', 'une hache', 'un katana', 'une tronçoneuse',
         # Armes à feu
-        'un 9mm', 'un fusil sniper', 'un fusil d\'assaut',
+        'un 9mm', 'un sniper', 'un M16',
         # Electronique
-        'un telephone portable', 'un ordinateur', 'une radio',
+        'un telephone', 'un ordinateur', 'une radio',
         # Divers
-        'un tournevis', 'une peluche', 'une boite de conserve',
+        'un tournevis', 'une peluche', 'une conserve',
     ],
     'sentences': [
         'Face à un glacier, bien gardé, votre seul désire est d\' y entrer',
@@ -44,8 +44,8 @@ _FR = {
 
     # Elements du message final
     'message': '%(sentence)s \n'
-               'Mais pour cela vous ne disposez que d\'%(allowed_items)s',
-    'linkers' : (', d\'', ' et d\'')
+               'Objets : %(allowed_items)s',
+    'linkers' : (', ', ' et ')
 }
 
 language['fr'] = _FR

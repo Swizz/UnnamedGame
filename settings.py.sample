@@ -1,0 +1,9 @@
+''' All settings to use twitter API '''
+BotName = u'The twitter pseudonym'
+
+Ukey = u'Consumer key'
+Usecret = u'Consumer secret'
+
+Akey = u'Access token'
+Asecret = u'Access token secret'
+

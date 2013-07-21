@@ -29,14 +29,7 @@ from lang import get_language
 from core import Core
 import json
 import re
-
-Ukey = 'censored'
-Usecret = 'censored'
-
-Akey = 'censored'
-Asecret = 'censored'
-
-BotName = 'censored'
+from settings import *
 
 class Streamer(StreamListener):
     ''' A listener handles tweets are the received from the stream.

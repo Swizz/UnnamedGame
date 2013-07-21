@@ -95,15 +95,19 @@ class Crawler():
         text = re.sub(self.regexp, '', text)
         text = re.sub(r'\s+$', '', text)
 
-        lang = get_language(text, key='startword')
-        core = Core(lang)
+        lang = get_language(text, key=u'startword')
 
-        self.send_message(core.send_message(), author)
+        if lang is not None:
+            core = Core(lang)
+            self.send_message(core.send_message(), author)
 
     def send_message(self, text, target=None):
+
         if(target is not None):
             text = u'@%s %s' % (target, text)
 
+        print(text)
+        print '>>>', len(text)
         self.api.update_status(text)
 
 if __name__ == '__main__':

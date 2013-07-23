@@ -71,3 +71,20 @@ def get_language(string, key=None):
                 return lang
 
     return None
+
+def check_sentence(lang=None):
+    ''' Check the length of all sentence in a
+        specicific language, or not. '''
+
+    MAX_LENGTH = 123 #max pseudo lentght is 15
+                     #max tweet length is 140
+
+    if lang is None :
+        for lang, dic in language.items():
+            for sentence in dic['sentences']:
+                if len(sentence) > MAX_LENGTH:
+                    print '%s: %s >>> %d' % (lang, sentence, len(sentence))
+    else:
+        for sentence in language[lang]['sentences']:
+            if len(sentence) > MAX_LENGTH:
+                print '%s: %s >>> %d' % (lang, sentence, len(sentence))

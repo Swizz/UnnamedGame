@@ -31,15 +31,29 @@ _FR = {
     'items': [
         # Armes blanches
         u'un couteau', u'une hache', u'un katana', u'une tronçoneuse',
+        u'un secateur', u'une matraque', u'une machette', u'un tesson',
+        u'une faucille', u'une beche', u'une pelle', 'un gourdin',
         # Armes à feu
-        u'un 9mm', u'un sniper', u'un M16',
+        u'un 9mm', u'un sniper', u'un M16', u'un canon scié',
+        u'un AK-47', u'une arbalète', u'un arc', u'une grenade',
         # Electronique
-        u'un telephone', u'un ordinateur', u'une radio',
+        u'un telephone', u'un ordinateur', u'une radio', u'un baladeur',
+        u'un talkie-walkie', u'un laser', u'une lampe torche',
+        u'une TV', 'des ecouteurs',
         # Divers
-        u'un tournevis', u'une peluche', u'une conserve',
+        u'un tournevis', u'une peluche', u'une conserve', u'un caddie',
+        u'une chaise', u'un ballon', u'un oeuf', u'une guitare', u'une flute',
+        u'un cd', u'des clous', u'un billet', u'un bonbon', u'une peluche',
+        u'un ventilateur', u'un dictionnaire', u'une assiette', u'un coussin',
+        u'une poubelle', u'une louche', u'une pagaie', u'un mouchoir',
+        u'un chiwawa', u'un chat', u'une fourchette', u'un clavier'
     ],
     'sentences': [
-        u'Face à un glacier, bien gardé, votre seul désire est d\'y entrer',
+        u'Des montagnes de cadavres inanimés pullulent.\n'
+        u'Mais tous ne sont pas sans vie. D\'ailleurs quelques uns vous ont remarqué.',
+
+        u'Vous entrez dans des toilettes publiques, et l\'odeur est insoutenable.\n'
+        u'Sans crier gare, un zombie cul nu vous saute dessus.',
     ],
 
     # Elements du message final
